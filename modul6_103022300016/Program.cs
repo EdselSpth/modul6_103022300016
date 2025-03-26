@@ -8,19 +8,19 @@ namespace modul6_103022300016
         {
             // Membuat objek video
             SayaTubeVideo video1 = new SayaTubeVideo("Review Film Your Name oleh Edsel Septa Haryanto");
-            video1.increasePlayCount(100000000);
+            video1.increasePlayCount(1000000);
             SayaTubeVideo video2 = new SayaTubeVideo("Review Film Weathering With You oleh Edsel Septa Haryanto");
-            video2.increasePlayCount(200000000);
+            video2.increasePlayCount(2000000);
             SayaTubeVideo video3 = new SayaTubeVideo("Review Film Bungo Stray Dogs oleh Edsel Septa Haryanto");
-            video3.increasePlayCount(300000000);
+            video3.increasePlayCount(300000);
             SayaTubeVideo video4 = new SayaTubeVideo("Review Film Owari No Seraph oleh Edsel Septa Haryanto");
-            video4.increasePlayCount(400000000);
+            video4.increasePlayCount(400000);
             SayaTubeVideo video5 = new SayaTubeVideo("Review Film Sherlock Holmes oleh Edsel Septa Haryanto");
             video5.increasePlayCount(100);
             SayaTubeVideo video6 = new SayaTubeVideo("Review Film Avangers oleh Edsel Septa Haryanto");
             video6.increasePlayCount(200);
             SayaTubeVideo video7 = new SayaTubeVideo("Review Film Hololive 6th Fes oleh Edsel Septa Haryanto");
-            video7.increasePlayCount(700000000);
+            video7.increasePlayCount(700000);
             SayaTubeVideo video8 = new SayaTubeVideo("Review Film Touche oleh Edsel Septa Haryanto");
             video8.increasePlayCount(300);
             SayaTubeVideo video9 = new SayaTubeVideo("Review Film Interstellar oleh Edsel Septa Haryanto");
@@ -54,6 +54,28 @@ namespace modul6_103022300016
             Console.WriteLine("Daftar Video");
             user1.PrintAllPlayCount();
             Console.WriteLine("----------------------------------------------------");
+
+            Console.WriteLine("---------------------------------------------------");
+            Console.WriteLine("Pengecekan Overflow Video");
+            for (int i = 0; i < 1000; i++)
+            //Perulangan untuk menambahkan jumlah view sebanyak 1000 kali untuk pengetesan overflow int
+            {
+                video1.increasePlayCount(10000000);
+                video1.printVideoDetail();
+                Console.WriteLine();
+
+                if (video1.getPlayCount() == int.MaxValue)
+                    // untuk menghentikan perulangan ketika jumlah view mencapai batas maksimum
+                    {
+                    break;
+                }
+            }
+
+            // Menampilkan total play count
+            Console.WriteLine("---------------------------------------------------");
+            Console.WriteLine("User: " + user1.username);
+            Console.WriteLine("Total play count seluruh video: " + user1.getTotalVideoPlayCount());
+            Console.WriteLine("---------------------------------------------------");
         }
     }
 }
